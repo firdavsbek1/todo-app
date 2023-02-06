@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container m-5 p-2 rounded mx-auto bg-light shadow">
+<div class="row m-1 p-4">
+        <div class="col">
+            <a href="{% url 'main-page' %}"><i class="fa fa-angle-left fa-2x"></i></a>
+            <div class="p-1 h1 text-primary text-center mx-auto display-inline-block">
+                <i class="fa fa-check bg-primary text-white rounded p-2"></i>
+                <u>Edit Todo-s</u>
+            </div>
+        </div>
+    </div>
+<div class="row m-1 p-3">
+    <div class="col col-11 mx-auto">
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="row bg-white rounded shadow-sm p-2 add-todo-wrapper align-items-center justify-content-center">
+                <div class="col">
+                    <input class="form-control form-control-lg border-0 add-todo-input bg-transparent rounded"
+                           type="text" name="todo-text" value="{{todo.todo_text}}">
+                </div>
+                <div class="col-auto m-0 px-2 d-flex align-items-center">
+                    <input class="text-primary btn my-2 px-1" value="{{due_date_formatted}}" type="datetime-local"
+                           data-toggle="tooltip" name="due-date" title="Set a Due date" data-placement="bottom">
+                </div>
+                <div class="col-auto px-0 mx-0 mr-2">
+                    <a href="{% url 'main-page' %}">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+{% endblock content %}

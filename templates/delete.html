@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container m-5 p-2 rounded mx-auto bg-light shadow">
+<div class="row m-1 p-4">
+        <div class="col">
+            <a href="{% url 'main-page' %}"><i class="fa fa-angle-left fa-2x"></i></a>
+            <div class="p-1 h1 text-primary text-center mx-auto display-inline-block">
+                <i class="fa fa-check bg-primary text-white rounded p-2"></i>
+                <u>Delete Todo-s</u>
+            </div>
+        </div>
+    </div>
+<div class="row m-1 p-3">
+    <div class="col col-11 mx-auto" style="text-align:center;">
+        <h4>Do you want to delete todo "{{todo}}"&nbsp;?</h4>
+        <div style="margin-top:3rem;">
+            <form action="" method="post">
+                {% csrf_token %}
+                <a style="padding:.6rem 1.2rem;" href="{% url 'main-page' %}" class="btn btn-dark">Cancel</a>
+                &nbsp;&nbsp;
+                <input style="padding:.6rem 1.2rem;" type="submit" class="btn btn-danger" value="Delete">
+            </form>
+
+        </div>
+    </div>
+</div>
+</div>
+{% endblock content %}
