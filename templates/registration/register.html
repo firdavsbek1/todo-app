@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container m-5 p-2 rounded mx-auto bg-light shadow">
+    <div class="row m-1 p-4">
+        <div class="col">
+            <a href="{% url 'main-page' %}"><i class="fa fa-angle-left fa-2x"></i></a>
+            <div class="p-1 h1 text-primary text-center mx-auto display-inline-block">
+                <i class="fa fa-check bg-primary text-white rounded p-2"></i>
+                <u>Register Todo-s</u>
+            </div>
+        </div>
+    </div>
+    <div class="row m-1 p-3">
+        <div class="col col-11 mx-auto">
+
+            <div class="row bg-white rounded shadow-sm p-2 add-todo-wrapper align-items-center justify-content-center" style="padding-top:2rem!important;">
+                <form action="" method="post" style="padding-bottom:4rem;width:50%;">
+                    {% csrf_token %}
+                    {{form|crispy}}
+                    <input type="submit" value="Register" class="btn btn-primary" style="float:right;"><br>
+                    <h5 style="padding-top:2rem;">Already have an account? <a href="{% url 'login' %}">Login</a></h5>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock content %}

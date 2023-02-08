@@ -27,7 +27,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # third party
     "whitenoise.runserver_nostatic",
+    "crispy_forms",
+    "crispy_bootstrap5",
     # local apps
     'todo.apps.TodoConfig',
 ]
@@ -67,23 +70,23 @@ WSGI_APPLICATION = 'django_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': "todo_database",
-        "USER": 'postgres',
-        "PASSWORD":env.str("DB_PASSWORD"),
-        "HOST": "todo-database.cljtfi6np5vp.ap-northeast-1.rds.amazonaws.com",
-        "PORT": 5432,
-    }
-}
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': "todo-database",
+#         "USER": 'postgres',
+#         "PASSWORD":env.str("DB_PASSWORD"),
+#         "HOST": "todo-database.cljtfi6np5vp.ap-northeast-1.rds.amazonaws.com",
+#         "PORT": 5432,
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 
 # Password validation
@@ -115,6 +118,15 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
+
+# Email Host setup
+EMAIL_BACKEND="django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST="smtp.gmail.com"
+EMAIL_PORT=587
+EMAIL_USE_TLS=True
+EMAIL_HOST_USER="udemytogether204@gmail.com"
+EMAIL_HOST_PASSWORD="jtmhpqsckrzqlbxr"
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
@@ -125,3 +137,8 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL="/"
+LOGOUT_REDIRECT_URL="/"
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"

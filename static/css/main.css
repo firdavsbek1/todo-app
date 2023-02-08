@@ -34,3 +34,8 @@ body {
 .todo-item.editing .todo-actions .edit-icon {
     display: none !important;
 }
+.notification{
+    position:sticky;
+    top: 0rem;
+    rigth: 1rem;
+}

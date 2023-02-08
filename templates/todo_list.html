@@ -9,6 +9,11 @@
                 <i class="fa fa-check bg-primary text-white rounded p-2"></i>
                 <u>My Todo-s</u>
             </div>
+            {% if request.user.is_authenticated %}
+            <a class="btn btn-primary "  href="{% url 'logout' %}">Logout</a>
+            {% else %}
+            <a class="btn btn-primary" href="{% url 'login' %}">Login</a>
+            {% endif %}
         </div>
     </div>
     <!-- Create todo section -->
